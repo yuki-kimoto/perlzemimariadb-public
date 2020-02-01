@@ -4,21 +4,39 @@
     <!-- meta -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/images/giblog-logo.png">
+<link rel="icon" type="image/x-icon" href="/images/dibx_custom_logo.png">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Entries - mysite😄</title>
-<meta name="description" content="Entries of mysite😄">
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>Entries - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="Entries of MariaDB入門 - MariaDBならPerlゼミのMariaDB入門">
   </head>
   <body>
     <div class="container">
       <div class="header">
         <!-- header -->
-<div class="main">
-  <h1>
-    <a href="/">Giblog Web Site</a>
-  </h1>
-</div>
+<h1>
+  <a href="/">MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</a>
+</h1>
 
       </div>
       <div class="main">
@@ -31,6 +49,15 @@
   <div class="middle">
     <h2><a href="/list.html">Entries</a></h2>
 <ul>
+  <li style="list-style:none;">
+    <b>2020</b>
+  </li>
+  <li style="list-style:none">
+    1/27 <a href="/blog/20200127081842.html">その他の機能</a>
+  </li>
+  <li style="list-style:none">
+    1/26 <a href="/blog/20200126081842.html">DBIx::Customとは</a>
+  </li>
   <li style="list-style:none;">
     <b>2019</b>
   </li>
@@ -61,11 +88,65 @@
   <li style="list-style:none">
     12/1 <a href="/blog/20181201121234.html">Hello Giblog 1</a>
   </li>
+  <li style="list-style:none;">
+    <b>2011</b>
+  </li>
+  <li style="list-style:none">
+    9/28 <a href="/blog/20110928132041.html">order by句の生成</a>
+  </li>
+  <li style="list-style:none">
+    9/26 <a href="/blog/20110926132031.html">フィルタリング</a>
+  </li>
+  <li style="list-style:none">
+    9/24 <a href="/blog/20110924132031.html">動的にwhere句を作成する</a>
+  </li>
+  <li style="list-style:none">
+    9/11 <a href="/blog/20110911131900.html">テーブルと列の情報を調べる</a>
+  </li>
+  <li style="list-style:none">
+    9/4 <a href="/blog/20110904131900.html">ユーティリティ</a>
+  </li>
+  <li style="list-style:none">
+    8/16 <a href="/blog/20110816131802.html">モデルの作成</a>
+  </li>
+  <li style="list-style:none">
+    8/12 <a href="/blog/20110812131778.html">select文で利用する列名を簡単に生成する - column</a>
+  </li>
+  <li style="list-style:none">
+    7/9 <a href="/blog/20110709131364.html">行のフェッチ</a>
+  </li>
+  <li style="list-style:none">
+    7/8 <a href="/blog/20110708131364.html">executeメソッドSQLを実行</a>
+  </li>
+  <li style="list-style:none">
+    5/16 <a href="/blog/20110516130787.html">データベースへの接続</a>
+  </li>
+  <li style="list-style:none">
+    5/8 <a href="/blog/20110508130736.html">DBIx::Customのインストール</a>
+  </li>
+  <li style="list-style:none">
+    4/1 <a href="/blog/20110401130559.html">DBIx::Custom - SQLでデータベースに簡単アクセス</a>
+  </li>
+  <li style="list-style:none">
+    2/10 <a href="/blog/20110210130016.html">selectメソッドで行を選択</a>
+  </li>
+  <li style="list-style:none">
+    2/2 <a href="/blog/20110202130016.html">deleteメソッドで行を削除</a>
+  </li>
+  <li style="list-style:none">
+    1/30 <a href="/blog/20110130130016.html">updateメソッドで行を更新</a>
+  </li>
+  <li style="list-style:none">
+    1/29 <a href="/blog/20110129130016.html">insertメソッドで行を挿入</a>
+  </li>
 </ul>
 
   </div>
   <div class="bottom">
     <!-- bottom -->
+<div class="to_top">
+  <a class="js_to_top" title="上へ" onclick="$('body, html').animate({scrollTop: 0},100, 'linear');">&#x25B2</a>
+</div>
 
   </div>
 </div>
@@ -75,20 +156,19 @@
           <!-- side -->
 <div class="side-list">
   <div class="side-list-title">
-    Side Bar
+    使い方
   </div>
   <ul>
-    <li><a href="/list.html">Entries</a></li>
-    <li>Bar</li>
-    <li>Baz</li>
+    <li><a href="/list.html">すべての記事</a></li>
   </ul>
 </div>
+
 
         </div>
       </div>
       <div class="footer">
         <!-- footer -->
-<a href="https://github.com/yuki-kimoto/giblog">Giblog</a>
+<a href="https://jp.giblog.net/">Created by Giblog</a>
 
       </div>
     </div>
