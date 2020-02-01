@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
-<meta name="description" content="MariaDBは、MySQLからフォークされたMySQL互換性が高いリレーショナルデータベースシステムです。MySQLがOracleに買収されたときに、プロジェクトがフォークされました。">
+<title>データベースエンジンの種類を確認する - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="MariaDBで、データベースエンジンの種類を確認するSQLコマンドを紹介します。">
   </head>
   <body>
     <div class="container">
@@ -47,22 +47,53 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">MariaDB入門</a></h2>
+    <h2><a href="/blog/20200131110010.html">データベースエンジンの種類を確認する</a></h2>
 <p>
-  MariaDBは、MySQLからフォークされたMySQL互換性が高いリレーショナルデータベースシステムです。MySQLがOracleに買収されたときに、プロジェクトがフォークされました。
+  MariaDBで、データベースエンジンの種類を確認するSQLコマンドを紹介します。
 </p>
 <p>
-  2020年現在、MariaDBとMySQLは、内部的なソースコードにかなりの差がでてきています。外部的な機能にも差が出てくることも予想されます。
+  すべてのテーブルのデータベースエンジンをInnoDBにしているはずが、何かの間違いで、MyISAMになっているテーブルがあるという場合がときどきあります。
 </p>
 <p>
-  そこで、MariaDB用のWebサイトを作成することにしました。
+  こういう場合に、すべてのテーブルで、データベースエンジンを確認できると便利です。
+</p>
+<h3>データベースエンジンの種類を確認する</h3>
+<p>
+  データベースエンジンの種類を確認するSQLコマンドです。
+</p>
+<p>
+  information_schema.tablesのengineフィールドで、データベースエンジンの種類を確認できます。
+</p>
+<pre>
+select
+  table_name, engine
+from 
+  information_schema.tables  
+where
+  table_schema=database()  
+order by
+  table_name
+;
+</pre>
+<p>
+  出力結果の例です。
+</p>
+<pre>
++-----------------------+--------+
+| table_name            | engine |
++-----------------------+--------+
+| book                  | InnoDB |
+| author                | InnoDB |
+| publisher             | InnoDB |
++-----------------------+--------+
+</pre>
+<h3>データベースエンジンを変更する</h3>
+<p>
+  データベースエンジンを、変更したい場合は「alter table change database engine」コマンドを使用します。
 </p>
 <ul>
-  <li><a href="/blog/20200131110010.html">データベースエンジンの種類を確認する</a></li>
+  <li><a href="">データベースエンジンを変更する</a></li>
 </ul>
-<p>
-  <a href="/list.html">すべての記事</a>
-</p>
 
   </div>
   <div class="bottom">
