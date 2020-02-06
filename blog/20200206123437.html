@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
-<meta name="description" content="MariaDBは、MySQLからフォークされたMySQL互換性が高いリレーショナルデータベースシステムです。MySQLがOracleに買収されたときに、プロジェクトがフォークされました。">
+<title>外部キー制約を確認する - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="外部キー制約を確認するには「show create table」コマンドを実行して「CONSTRAINT ～ FOREIGN KEY」を確認します。">
   </head>
   <body>
     <div class="container">
@@ -47,30 +47,22 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">MariaDB入門</a></h2>
+    <h2><a href="/blog/20200206123437.html">外部キー制約を確認する</a></h2>
 <p>
-  MariaDBは、MySQLからフォークされたMySQL互換性が高いリレーショナルデータベースシステムです。MySQLがOracleに買収されたときに、プロジェクトがフォークされました。
+  外部キー制約を確認するには「show create table」コマンドを実行して「CONSTRAINT ～ FOREIGN KEY」を確認します。
 </p>
+<pre>
+show create table book;
+</pre>
 <p>
-  2020年現在、MariaDBとMySQLは、内部的なソースコードにかなりの差がでてきています。バージョン番号の付け方も変更がありました。外部的な機能の差が広がってくることも予想されます。
+  出力結果のサンプルです。外部キー制約が設定されているのが確認できます。
 </p>
-<p>
-  そこで、MariaDB用の解説サイトを作成することにしました。
-</p>
-<h3>調査</h3>
-<ul>
-  <li><a href="/blog/20200201110010.html">MariaDBでテーブルの容量とデータベースの容量を確認する</a></li>
-  <li><a href="/blog/20200131110010.html">データベースエンジンの種類を確認する</a></li>
-  <li><a href="/blog/20200131110010.html">データベースエンジンを変更する</a></li>
-</ul>
-<h3>外部キー制約</h3>
-<ul>
-  <li><a href="/blog/20200205123437.html">外部キー制約を確認する</a></li>
-  <li><a href="/blog/20200205123437.html">外部キー制約を削除する</a></li>
-</ul>
-<p>
-  <a href="/list.html">すべての記事</a>
-</p>
+<pre>
+CREATE TABLE `book` (
+  ...
+  CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+</pre>
 
   </div>
   <div class="bottom">

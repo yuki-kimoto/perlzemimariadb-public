@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
-<meta name="description" content="MariaDBは、MySQLからフォークされたMySQL互換性が高いリレーショナルデータベースシステムです。MySQLがOracleに買収されたときに、プロジェクトがフォークされました。">
+<title>外部キー制約を削除する - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="外部キー制約を削除するには「alter table drop foreign key」コマンドを実行します。">
   </head>
   <body>
     <div class="container">
@@ -47,30 +47,25 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">MariaDB入門</a></h2>
+    <h2><a href="/blog/20200205123437.html">外部キー制約を削除する</a></h2>
 <p>
-  MariaDBは、MySQLからフォークされたMySQL互換性が高いリレーショナルデータベースシステムです。MySQLがOracleに買収されたときに、プロジェクトがフォークされました。
+  外部キー制約を削除するには「alter table drop foreign key」コマンドを実行します。
 </p>
+<pre>
+alter table テーブル名 drop foreign key 外部キー制約名
+</pre>
 <p>
-  2020年現在、MariaDBとMySQLは、内部的なソースコードにかなりの差がでてきています。バージョン番号の付け方も変更がありました。外部的な機能の差が広がってくることも予想されます。
+  bookテーブルのbook_ibfk_1という外部キー制約を削除するサンプルです。
 </p>
+<pre>
+alter table book drop foreign key book_ibfk_1
+</pre>
 <p>
-  そこで、MariaDB用の解説サイトを作成することにしました。
+  どのような外部キー制約が設定されているかを確認する場合は、以下の記事を参考にしてください。
 </p>
-<h3>調査</h3>
-<ul>
-  <li><a href="/blog/20200201110010.html">MariaDBでテーブルの容量とデータベースの容量を確認する</a></li>
-  <li><a href="/blog/20200131110010.html">データベースエンジンの種類を確認する</a></li>
-  <li><a href="/blog/20200131110010.html">データベースエンジンを変更する</a></li>
-</ul>
-<h3>外部キー制約</h3>
 <ul>
   <li><a href="/blog/20200205123437.html">外部キー制約を確認する</a></li>
-  <li><a href="/blog/20200205123437.html">外部キー制約を削除する</a></li>
 </ul>
-<p>
-  <a href="/list.html">すべての記事</a>
-</p>
 
   </div>
   <div class="bottom">
