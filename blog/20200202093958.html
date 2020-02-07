@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>Entries - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
-<meta name="description" content="Entries of MariaDB入門 - MariaDBならPerlゼミのMariaDB入門">
+<title>explain - SQLの性能調査のためにSQLの実行プランを見る - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="explainコマンドを使用すると、SQLの実行プランを見ることができます。SQLの性能調査をするときに、まず試してみるコマンドがexplainです。">
   </head>
   <body>
     <div class="container">
@@ -47,39 +47,30 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/list.html">Entries</a></h2>
-<ul>
-  <li style="list-style:none;">
-    <b>2020</b>
-  </li>
-  <li style="list-style:none">
-    2/7 <a href="/blog/20200207093958.html">インデックスを作成する</a>
-  </li>
-  <li style="list-style:none">
-    2/6 <a href="/blog/20200206123437.html">外部キー制約を確認する</a>
-  </li>
-  <li style="list-style:none">
-    2/5 <a href="/blog/20200205123437.html">外部キー制約を削除する</a>
-  </li>
-  <li style="list-style:none">
-    2/4 <a href="/blog/20200204093958.html">インデックスを削除する</a>
-  </li>
-  <li style="list-style:none">
-    2/3 <a href="/blog/20200203093958.html">インデックスを確認する</a>
-  </li>
-  <li style="list-style:none">
-    2/2 <a href="/blog/20200202093958.html">explain - SQLの性能調査のためにSQLの実行プランを見る</a>
-  </li>
-  <li style="list-style:none">
-    2/1 <a href="/blog/20200201110010.html">MariaDBでテーブルの容量とデータベースの容量を確認する</a>
-  </li>
-  <li style="list-style:none">
-    1/31 <a href="/blog/20200131110010.html">データベースエンジンの種類を確認する</a>
-  </li>
-  <li style="list-style:none">
-    1/30 <a href="/blog/20200130110010.html">データベースエンジンを変更する</a>
-  </li>
-</ul>
+    <h2><a href="/blog/20200202093958.html">explain - SQLの性能調査のためにSQLの実行プランを見る</a></h2>
+<p>
+  explainコマンドを使用すると、SQLの実行プランを見ることができます。SQLの性能調査をするときに、まず試してみるコマンドがexplainです。
+</p>
+<pre>
+explain 確認したいSQL
+</pre>
+<p>
+  「select * from book where author_id = 4;」というSQLを性能調査するためにexplainを使うサンプルです。SQLの前にexplainをつけるだけです。
+</p>
+<pre>
+explain select * from book where author_id = 4;
+</pre>
+<h3>性能調査の見どころ</h3>
+<p>
+  性能調査の見どころです。
+</p>
+<h4>性能調査の最重要ポイントはインデックスが使われているか</h4>
+<p>
+  SQLの性能調査の最重要ポイントは、インデックスが使われているかです。
+</p>
+<p>
+  数万件以上の行を持つテーブルで、すべての行を線形探索している場合、SQLは劇的に遅いです。インデックスが使われるように、SQLを修正するか、<a href="/blog/20200207093958.html">インデックスを作成</a>する必要があります。
+</p>
 
   </div>
   <div class="bottom">
