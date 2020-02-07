@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>Entries - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
-<meta name="description" content="Entries of MariaDB入門 - MariaDBならPerlゼミのMariaDB入門">
+<title>インデックスを確認する - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="インデックスを確認するには「show create table」コマンドを使用します。">
   </head>
   <body>
     <div class="container">
@@ -47,35 +47,31 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/list.html">Entries</a></h2>
+    <h2><a href="/blog/20200203093958.html">インデックスを確認する</a></h2>
+<p>
+  インデックスを確認するには「show create table」コマンドを使用します。
+</p>
+<pre>
+# インデックスの確認
+show create table book;
+</pre>
+<p>
+  「KEY」という名前の行でインデックスの定義を確認できます。
+</p>
+<pre>
+KEY `book_author_id` (`author_id`)
+</pre>
+<p>
+  インデックスを作成したい場合は、以下の記事を参考にしてください。
+</p>
 <ul>
-  <li style="list-style:none;">
-    <b>2020</b>
-  </li>
-  <li style="list-style:none">
-    2/7 <a href="/blog/20200207093958.html">インデックスを作成する</a>
-  </li>
-  <li style="list-style:none">
-    2/6 <a href="/blog/20200206123437.html">外部キー制約を確認する</a>
-  </li>
-  <li style="list-style:none">
-    2/5 <a href="/blog/20200205123437.html">外部キー制約を削除する</a>
-  </li>
-  <li style="list-style:none">
-    2/4 <a href="/blog/20200204093958.html">インデックスを削除する</a>
-  </li>
-  <li style="list-style:none">
-    2/3 <a href="/blog/20200203093958.html">インデックスを確認する</a>
-  </li>
-  <li style="list-style:none">
-    2/1 <a href="/blog/20200201110010.html">MariaDBでテーブルの容量とデータベースの容量を確認する</a>
-  </li>
-  <li style="list-style:none">
-    1/31 <a href="/blog/20200131110010.html">データベースエンジンの種類を確認する</a>
-  </li>
-  <li style="list-style:none">
-    1/30 <a href="/blog/20200130110010.html">データベースエンジンを変更する</a>
-  </li>
+  <li><a href="/blog/20200207093958.html">インデックスを作成する</a></li>
+</ul>
+<p>
+  インデックスを削除したい場合は、以下の記事を参考にしてください。
+</p>
+<ul>
+  <li><a href="/blog/20200204093958.html">インデックスを削除する</a></li>
 </ul>
 
   </div>
