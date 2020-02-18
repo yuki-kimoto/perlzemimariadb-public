@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/mariadb-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>create table - テーブルを作成する - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="テーブルを作成するには「create table」構文を使います。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200218150054.html">create table - テーブルを作成する</a></h2>
+<p>
+  テーブルを作成するには「create table」構文を使います。
+</p>
+<pre>
+create table テーブル名 (
+  フィールド定義1,
+  フィールド定義2,
+  フィールド定義n
+) オプション;
+</pre>
+<p>
+  本の分類「book_category」テーブルを「create table」構文で作成するサンプルです。
+</p>
+<pre>
+create table book_category (
+  id int primary key auto_increment,
+  name varchar(150) not null default ''
+) engine=InnoDB charset=utf8mb4;
+</pre>
+<h3>テーブルを作成するときの注意点を教えてください</h3>
+<p>
+  テーブルを作成するときの注意点です。
+</p>
+<h4>データベースのテーブル名とフィールド名の命名規約</h4>
+<p>
+  実際にWebサービス開発を行うときに、データベースを利用することが多いので、Mojoliciousスタートアップに、データベースのテーブル名とフィールド名の命名規約のトピックを作りました。
+</p>
+<p>
+  <a href="https://web.perlzemi.com/blog/20191113074356.html">データベースのテーブル名とフィールド名の命名規約</a>
+</p>
+<h4>ポータブルな「create table」にするためには?</h4>
+<p>
+  MariaDBには、データベースエンジンという概念がありますが、Webサービス開発で利用するデータベースエンジンは、InnoDBになります。InnoDBは、トランザクションをサポートしたデータベースエンジンです。これをオプションで指定します。
+</p>
+<p>
+  MariaDBでは、正しくUTF-8を表現する文字コードの設定は「utf8mb4」です。「utf8」は、3バイトしかなく、4バイトを必要とするUnicodeを表現できません。4バイト表現できる「utf8mb4」を指定します。古いMariaDBでは、utf8mb4がサポートされていないですが、MariaDB入門では、utf8mb4がサポートされているバージョン以降のMariaDBを前提とします。
+</p>
+<p>
+  「not null」制約を使った場合は、defaultの指定を行います。MariaDBの設定しだいで、defaultが設定されていない場合に、テーブルの作成が失敗するので、これを回避するためです。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+<div class="to_top">
+  <a class="js_to_top" title="上へ" onclick="$('body, html').animate({scrollTop: 0},100, 'linear');">&#x25B2</a>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    使い方
+  </div>
+  <ul>
+    <li><a href="/list.html">すべての記事</a></li>
+  </ul>
+</div>
+
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://jp.giblog.net/">Created by Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>
