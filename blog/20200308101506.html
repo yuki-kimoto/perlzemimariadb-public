@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>Entries - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
-<meta name="description" content="Entries of MariaDB入門 - MariaDBならPerlゼミのMariaDB入門">
+<title>テーブルの一覧を表示する - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="テーブルの一覧を表示するには「SHOW TABLES FROM」構文を使用します。">
   </head>
   <body>
     <div class="container">
@@ -47,51 +47,31 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/list.html">Entries</a></h2>
-<ul>
-  <li style="list-style:none;">
-    <b>2020</b>
-  </li>
-  <li style="list-style:none">
-    3/10 <a href="/blog/20200310101506.html">use - データベースを選択する</a>
-  </li>
-  <li style="list-style:none">
-    3/9 <a href="/blog/20200309102346.html">MariaDBデータベースに接続する</a>
-  </li>
-  <li style="list-style:none">
-    3/8 <a href="/blog/20200308101506.html">テーブルの一覧を表示する</a>
-  </li>
-  <li style="list-style:none">
-    2/18 <a href="/blog/20200218150054.html">create table - テーブルを作成する</a>
-  </li>
-  <li style="list-style:none">
-    2/7 <a href="/blog/20200207093958.html">インデックスを作成する</a>
-  </li>
-  <li style="list-style:none">
-    2/6 <a href="/blog/20200206123437.html">外部キー制約を確認する</a>
-  </li>
-  <li style="list-style:none">
-    2/5 <a href="/blog/20200205123437.html">外部キー制約を削除する</a>
-  </li>
-  <li style="list-style:none">
-    2/4 <a href="/blog/20200204093958.html">インデックスを削除する</a>
-  </li>
-  <li style="list-style:none">
-    2/3 <a href="/blog/20200203093958.html">インデックスを確認する</a>
-  </li>
-  <li style="list-style:none">
-    2/2 <a href="/blog/20200202093958.html">explain - SQLの性能調査のためにSQLの実行プランを見る</a>
-  </li>
-  <li style="list-style:none">
-    2/1 <a href="/blog/20200201110010.html">MariaDBでテーブルの容量とデータベースの容量を確認する</a>
-  </li>
-  <li style="list-style:none">
-    1/31 <a href="/blog/20200131110010.html">データベースエンジンの種類を確認する</a>
-  </li>
-  <li style="list-style:none">
-    1/30 <a href="/blog/20200130110010.html">データベースエンジンを変更する</a>
-  </li>
-</ul>
+    <h2><a href="/blog/20200308101506.html">テーブルの一覧を表示する</a></h2>
+<p>
+  テーブルの一覧を表示するには「SHOW TABLES FROM」構文を使用します。
+</p>
+<pre>
+SHOW TABLES FROM データベース名;
+</pre>
+<p>
+  「kimotosystem」というデータベース名のテーブル一覧を表示するサンプルです。
+</p>
+<pre>
+SHOW TABLES FROM kimotosystem;
+</pre>
+<p>
+  出力結果のサンプルです。
+</p>
+<pre>
++----------------------------+
+| Tables_in_kimotosystem     |
++----------------------------+
+| book                       |
+| author                     |
+| publisher                  |
++----------------------------+
+</pre>
 
   </div>
   <div class="bottom">
