@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/mariadb-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>パスワードの設定,データベースとテーブルのアクセス権限の設定 - grantコマンド - MariaDB入門 - MariaDBならPerlゼミのMariaDB入門</title>
+<meta name="description" content="ユーザーにパスワードとデータベースとテーブルの権限を設定するには、grantコマンドを使用します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">MariaDB入門<span class="hide-phone"> - MariaDBならPerlゼミ</span></a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200522082643.html">パスワードの設定,データベースとテーブルのアクセス権限の設定 - grantコマンド</a></h2>
+<p>
+  ユーザーにパスワードとデータベースとテーブルの権限を設定するには、grantコマンドを使用します。
+</p>
+<p>
+  あるユーザーには、すべての権限、あるユーザーには、SELECT権限だけを与えるということができます。<a href="/blog/20200523082643.html">ユーザーの作成</a>は事前に行っておきましょう。
+</p>
+<p>
+  また、このデータベースのすべてのテーブルの権限という設定を行うことができます。
+</p>
+<p>
+  GRANTコマンドの構文です。
+</p>
+<pre>
+GRANT 権限タイプ ON データベース名.テーブル名 TO 'ユーザー名'@'ホスト名' IDENTIFIED BY 'パスワード';
+</pre>
+<p>
+  権限タイプには、ALTER TABLEなどを含めてすべての権限を与える「ALL」、INSERT権限だけを与える「INSERT」、UPDATE権限だけを与える「UPDATE」、DELETE権限だけを与える「DELTE」、SELECT権限だけを与える「SELECT」などがあります。
+</p>
+<p>
+  権限タイプは、「,」を使って複数並列して指定できます
+</p>
+<p>
+  データベース名とテーブル名には、すべてという意味のワイルドカード「*」が使えます。
+</p>
+<p>
+  ユーザー名とホスト名とパスワードは文字列です。
+</p>
+<p>
+  ホスト名は、ローカルからのみアクセスする場合は「%」、特定リモートからアクセスする場合は、そのリモートの「IPアドレス」を指定しましょう。ローカルとリモートからのすべてのアクセスを指定する場合は「%」という文字列が使えます。一般的には、アクセス制御を、MariaDBの機能ではなく、ファイアーウォールを使って行うので「%」でもよいでしょう。
+</p>
+<h3>すべての権限を与える</h3>
+<p>
+  特定のデータベースのすべてのテーブルにすべての権限を与える。
+</p>
+<pre>
+GRANT ALL ON mydatabase.* TO 'kimotoall'@'%' IDENTIFIED BY 'eifjutAB&amp;';
+</pre>
+<h3>アプリケーション用にINSERT,UPDATE,DELETE,SELECTを許可する</h3>
+<p>
+  特定のデータベースのすべてのテーブルにINSERT,UPDATE,DELETE,SELECT権限を与える。
+</p>
+<pre>
+GRANT INSERT,UPDATE,DELETE,SELECT ON mydatabase.* TO 'kimotoapp'@'%' IDENTIFIED BY 'eifjutAB&amp;';
+</pre>
+<h3>参照用にSELECTのみを許可する</h3>
+<p>
+  特定のデータベースのすべてのテーブルにSELECT権限を与える。
+</p>
+<pre>
+GRANT SELECT ON mydatabase.* TO 'kimotoselect'@'%' IDENTIFIED BY 'eifjutAB&amp;';
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+<div class="to_top">
+  <a class="js_to_top" title="上へ" onclick="$('body, html').animate({scrollTop: 0},100, 'linear');">&#x25B2</a>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    使い方
+  </div>
+  <ul>
+    <li><a href="/list.html">すべての記事</a></li>
+  </ul>
+</div>
+
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://kimoto-system.co.jp/">サイト運営 木本システム <br>Copyright © 2020-2020 Yuki Kimoto</a>
+
+      </div>
+    </div>
+  </body>
+</html>
