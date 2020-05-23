@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>パスワードの設定,データベースとテーブルのアクセス権限の設定 - grantコマンド - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
-<meta name="description" content="ユーザーにパスワードとデータベースとテーブルの権限を設定するには、grantコマンドを使用します。">
+<title>ユーザーを削除する - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="ユーザーを削除するには「drop user」文を使用します。">
   </head>
   <body>
     <div class="container">
@@ -47,57 +47,18 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200522082643.html">パスワードの設定,データベースとテーブルのアクセス権限の設定 - grantコマンド</a></h2>
+    <h2><a href="/blog/20200520082643.html">ユーザーを削除する</a></h2>
 <p>
-  ユーザーにパスワードとデータベースとテーブルの権限を設定するには、grantコマンドを使用します。
-</p>
-<p>
-  あるユーザーには、すべての権限、あるユーザーには、select権限だけを与えるということができます。<a href="/blog/20200523082643.html">ユーザーの作成</a>は事前に行っておきましょう。
-</p>
-<p>
-  また、このデータベースのすべてのテーブルの権限という設定を行うことができます。
-</p>
-<p>
-  grantコマンドの構文です。
+  ユーザーを削除するには「drop user」文を使用します。
 </p>
 <pre>
-grant 権限タイプ on データベース名.テーブル名 to 'ユーザー名'@'ホスト名' identified by 'パスワード';
+drop user ユーザー名;
 </pre>
 <p>
-  権限タイプには、alter tableなどを含めてすべての権限を与える「all」、insert権限だけを与える「insert」、update権限だけを与える「update」、delete権限だけを与える「delte」、select権限だけを与える「select」などがあります。
-</p>
-<p>
-  権限タイプは、「,」を使って複数並列して指定できます
-</p>
-<p>
-  データベース名とテーブル名には、すべてという意味のワイルドカード「*」が使えます。
-</p>
-<p>
-  ユーザー名とホスト名とパスワードは文字列です。
-</p>
-<p>
-  ホスト名は、ローカルからのみアクセスする場合は「%」、特定リモートからアクセスする場合は、そのリモートの「ipアドレス」を指定しましょう。ローカルとリモートからのすべてのアクセスを指定する場合は「%」という文字列が使えます。一般的には、アクセス制御を、mariadbの機能ではなく、ファイアーウォールを使って行うので「%」でもよいでしょう。
-</p>
-<h3>すべての権限を与える</h3>
-<p>
-  特定のデータベースのすべてのテーブルにすべての権限を与える。
+  データベースを削除するサンプルです。
 </p>
 <pre>
-grant all on mydatabase.* to 'kimotoall'@'%' identified by 'eifjutab&amp;';
-</pre>
-<h3>アプリケーション用にinsert,update,delete,selectを許可する</h3>
-<p>
-  特定のデータベースのすべてのテーブルにinsert,update,delete,select権限を与える。
-</p>
-<pre>
-grant insert,update,delete,select on mydatabase.* to 'kimotoapp'@'%' identified by 'eifjutab&amp;';
-</pre>
-<h3>参照用にselectのみを許可する</h3>
-<p>
-  特定のデータベースのすべてのテーブルにselect権限を与える。
-</p>
-<pre>
-grant select on mydatabase.* to 'kimotoselect'@'%' identified by 'eifjutab&amp;';
+drop user kimoto;
 </pre>
 
   </div>
