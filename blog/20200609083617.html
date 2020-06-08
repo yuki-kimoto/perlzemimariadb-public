@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
-<meta name="description" content="MariaDBは、MySQLからフォークされたMySQL互換性が高いリレーショナルデータベースシステムです。MySQLがOracleに買収されたときに、プロジェクトがフォークされました。">
+<title>フィールドの定義を変更する - alter table change column文 - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="フィールドの定義を変更するには「alter table change column文」を使用します。">
   </head>
   <body>
     <div class="container">
@@ -47,70 +47,36 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">MariaDB入門</a></h2>
+    <h2><a href="/blog/20200609083617.html">フィールドの定義を変更する - alter table change column文</a></h2>
 <p>
-  MariaDBは、MySQLからフォークされたMySQL互換性が高いリレーショナルデータベースシステムです。MySQLがOracleに買収されたときに、プロジェクトがフォークされました。
+  フィールドの定義を変更するには「alter table change column文」を使用します。
+</p>
+<pre>
+alter table テーブル名 change column 変更対象のフィールド名 変更後のフィールド名 フィールド定義
+</pre>
+<p>
+  フィールド定義は、データ型、NULL制約、デフォルト値などを指定できます。
 </p>
 <p>
-  2020年現在、MariaDBとMySQLは、内部的なソースコードにかなりの差がでてきています。バージョン番号の付け方も変更がありました。外部的な機能の差が広がってくることも予想されます。
+  「alter table change column文」のサンプルです。
+</p>
+<pre>
+alter table book change column author author varchar(150) not null defatul '';
+</pre>
+<h3>alter table change column文で、フィールド名だけを変更できますか?</h3>
+<p>
+  フィールド名だけを変更することはMariaDBではできません。フィールド名だけを変更する場合でも、フィールド定義を記述する必要があります。
+</p>
+<h3>行が多い場合に「alter table change column文」が遅いです</h3>
+<p>
+  行が多い場合に「alter table change column文」が遅いのは、仕方ありません。
 </p>
 <p>
-  そこで、MariaDB用の解説サイトを作成することにしました。
+  MariaDBでは、一時的なテーブルを作成して、そこへコピーして、現在の処理に影響がないように、フィールド定義を変更してくれるので待ちましょう。
 </p>
 <p>
-  <a href="/list.html">新着情報</a>
+  このようなことが起こりますので、データ量が小さいうちに、あるいは、最初から多いことがわかっている場合は、データベースのテーブル設計をきちんとしておくことを推奨します。
 </p>
-<h3>MariaDBデータベースへの接続</h3>
-<ul>
-  <li><a href="/blog/20200309102346.html">MariaDBデータベースに接続する</a></li>
-</ul>
-<h3>ユーザー管理</h3>
-<ul>
-  <li><a href="/blog/20200309102346.html">ユーザーを作成する - create user</a></li>
-  <li><a href="/blog/20200522082643.html">パスワードの設定,データベースとテーブル権限の設定 - grant文</a></li>
-  <li><a href="/blog/20200517082643.html">ユーザーの一覧を表示する</a></li>
-  <li><a href="/blog/20200520082643.html">ユーザーを削除する</a></li>
-</ul>
-<h3>データベースの管理</h3>
-<ul>
-  <li><a href="/blog/20200310101506.html">use - データベースを選択する</a></li>
-  <li><a href="/blog/20200521082643.html">データベースを作成する</a></li>
-  <li><a href="/blog/20200518082643.html">データベースの一覧を表示する - show databases文</a></li>
-  <li><a href="/blog/20200519082643.html">データベースを削除する - drop database文</a></li>
-</ul>
-<h3>テーブルの管理</h3>
-<ul>
-  <li><a href="/blog/20200218150054.html">create table - テーブルを作成する</a></li>
-  <li><a href="/blog/20200308101506.html">テーブルの一覧を表示する</a></li>
-</ul>
-<h3>フィールド定義</h3>
-<ul>
-  <li><a href="/blog/20200609083617.html">フィールドの定義を変更する - alter table change column文</a></li>
-</ul>
-<h3>ディスク容量調査</h3>
-<ul>
-  <li><a href="/blog/20200201110010.html">MariaDBでテーブルの容量とデータベースの容量を確認する</a></li>
-</ul>
-<h3>データベースエンジン</h3>
-<ul>
-  <li><a href="/blog/20200131110010.html">データベースエンジンの種類を確認する</a></li>
-  <li><a href="/blog/20200131110010.html">データベースエンジンを変更する</a></li>
-</ul>
-<h3>外部キー制約</h3>
-<ul>
-  <li><a href="/blog/20200206123437.html">外部キー制約を確認する</a></li>
-  <li><a href="/blog/20200205123437.html">外部キー制約を削除する</a></li>
-</ul>
-<h3>インデックス</h3>
-<ul>
-  <li><a href="/blog/20200207093958.html">インデックスを作成する</a></li>
-  <li><a href="/blog/20200204093958.html">インデックスを削除する</a></li>
-  <li><a href="/blog/20200203093958.html">インデックスを確認する</a></li>
-</ul>
-<h3>性能調査</h3>
-<ul>
-  <li><a href="/blog/20200202093958.html">explain - SQLの性能調査のためにSQLの実行プランを見る</a></li>
-</ul>
 
   </div>
   <div class="bottom">
