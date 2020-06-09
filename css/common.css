@@ -211,6 +211,7 @@
     border-bottom:none;
   }
   .side-list ul {
+    margin-bottom:30px;
   }
   .side-list li {
     list-style:none;
