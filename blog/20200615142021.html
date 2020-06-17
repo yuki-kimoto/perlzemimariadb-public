@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>rootのパスワードを設定する - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
-<meta name="description" content="rootのパスワードを設定する方法を解説します。">
+<title>MariaDBのバージョンを確認する - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="MariaDBのバージョンを確認するにはmysqlコマンドの「--version」オプションを使用します。">
   </head>
   <body>
     <div class="container">
@@ -47,50 +47,19 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200616142021.html">rootのパスワードを設定する</a></h2>
+    <h2><a href="/blog/20200615142021.html">MariaDBのバージョンを確認する</a></h2>
 <p>
-  rootのパスワードを設定する方法を解説します。
-</p>
-<p>
-  MariaDBの初期状態ではrootパスワードが設定されていません。次の手順で、rootパスワードを設定しましょう。
-</p>
-<p>
-  設定されていない場合は、だれもで、データベースに対するすべての操作を行うことができ、高いセキュリティリスクが伴います。
-</p>
-<p>
-  まずrootユーザーで、パスワードなしで、<a href="/blog/20200309102346.html">MariaDBデータベースに接続</a>します。
+  MariaDBのバージョンを確認するにはmysqlコマンドの「--version」オプションを使用します。
 </p>
 <pre>
-mysql -uroot
+mysql --version
 </pre>
 <p>
-  データベースを「mysql」に変更します。
+  バージョンが表示されます。
 </p>
 <pre>
-use mysql
+mysql  Ver 15.1 Distrib 10.1.44-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
 </pre>
-<h3>rootパスワードの設定</h3>
-<p>
-  rootパスワードを設定します。
-</p>
-<pre>
-update user set Password=password('ghrudifA!&amp;') where User='root';
-flush privileges;
-</pre>
-<h3>rootパスワードを忘れてしまった場合</h3>
-<p>
-  rootパスワードを忘れてしまった場合は、以下の手順を実行してください。
-</p>
-<ul>
-  <li><a href="/blog/20200617142021.html">rootのパスワードを再設定する</a></li>
-</ul>
-<h3>MySQLとMariaDBのrootパスワード設定の差分</h3>
-<p>
-  MySQL 5.7.6以降はrootのパスワード設定は、Passwordフィールドがなくなり、authentication_stringフィールドを使って行うようです。
-</p>
-<p>
-  2020年6月17日に試したMariaDB 10.1.44では、Passwordフィールドがあり、設定できました。
-</p>
 
   </div>
   <div class="bottom">
