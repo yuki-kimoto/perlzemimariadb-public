@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/mariadb-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>SQLモード「STRICT_TRANS_TABLES」を無効にする - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="MariaDB 10.2.4以降では、STRICT_TRANS_TABLESというテーブルの行に厳密な型の値のみを許可するというモードが有効になっています。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">MariaDB入門<span class="hide-phone"> - MariaDBをPerlシステム開発で使う</span></a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200624110822.html">SQLモード「STRICT_TRANS_TABLES」を無効にする</a></h2>
+<p>
+  MariaDB 10.2.4以降では、STRICT_TRANS_TABLESというテーブルの行に厳密な型の値のみを許可するというモードが有効になっています。
+</p>
+<p>
+  これを無効にするには、sql_modeのSTRICT_TRANS_TABLESの値を削除してください。
+</p>
+<pre>
+[mysqld]
+
+# 変更前
+sql_mode="STRICT_TRANS_TABLES,他の値"
+
+# 変更後
+sql_mode="他の値"
+</pre>
+<h3>MariaDBのバージョンアップ時の注意</h3>
+<p>
+  MariaDB 10.2.4以降では、STRICT_TRANS_TABLESというテーブルの行に厳密な型の値のみを許可するというモードが有効になっています。
+</p>
+<p>
+  以下のようなエラーが発生した場合は、STRICT_TRANS_TABLESが有効になっていることが原因です。
+</p>
+<pre>
+DBD::mysql::st execute failed: Incorrect integer value: '無料' for column `kimotosystem`.`book`.`price` at row 1. Following SQL is executed.
+</pre>
+<p>
+  元のMariaDBの動作を持たせたい場合は、STRICT_TRANS_TABLESを無効にしましょう。
+</p>
+<h3>不正な値を完全にはじきたいか、insertを失敗させたくないか</h3>
+<p>
+  SQLモードの、この値は、プロジェクトの要件によって、不正な値を完全にはじきたいか、あるいは、insertを失敗させたくないかという観点で決めると良いと思います。
+</p>
+<p>
+  Perlの場合がプログラミング言語の型が緩やかなので、STRICT_TRANS_TABLESが有効になっていると、insertがエラーで終了しやすくなるという感じはあります。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB入門
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB関連技術を学ぶ
+  </div>
+  <ul>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://dbix-custom.perlzemi.com">データベースアクセスモジュール</a></li>
+    <li><a href="https://web.perlzemi.com">Webシステム開発入門</a></li>
+    <li><a href="https://linux.perlzemi.com">Linuxサーバー管理入門</a></li>
+    <li><a href="https://ubuntu.perlzemi.com/">Ubuntuサーバー構築入門</a></li> 
+    <li><a href="https://centos.perlzemi.com">CentOSサーバー構築入門</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    連絡先
+  </div>
+  <ul>
+    <li>
+      <a href="mailto:kimoto.yuki@gmail.com">kimoto.yuki@gmail.com</a>
+    </li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    Perlゼミニュース
+  </div>
+  <ul>
+    <li>
+      <div  style="padding:10px 10px;height:400px;overflow-y:auto;">
+        <a class="twitter-timeline" href="https://twitter.com/perlzemi?ref_src=twsrc%5Etfw">Tweets by perlzemi</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="kimoto_system_link">
+  <a href="https://kimoto-system.co.jp">
+    <img src="https://kimoto-system.co.jp/images/kimoto-system-logo.png" alt="Perl Webシステム開発">
+    Perl Webシステム開発の木本システム
+  </a>
+</div>
+
+<div class="copyright">
+  Copyright © Yuki Kimoto
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
