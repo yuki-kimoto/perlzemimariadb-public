@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>explain - SQLの性能調査のためにSQLの実行プランを見る - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
-<meta name="description" content="explainコマンドを使用すると、SQLの実行プランを見ることができます。SQLの性能調査をするときに、まず試してみるコマンドがexplainです。">
+<title>SQLモード「sql_mode」を確認する - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="SQLモード「sql_mode」の値を確認するには、グローバル変数の「sql_mode」を確認します。">
   </head>
   <body>
     <div class="container">
@@ -47,30 +47,25 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200202093958.html">explain - SQLの性能調査のためにSQLの実行プランを見る</a></h2>
+    <h2><a href="/blog/20200727094907.html">SQLモード「sql_mode」を確認する</a></h2>
 <p>
-  explainコマンドを使用すると、SQLの実行プランを見ることができます。SQLの性能調査をするときに、まず試してみるコマンドがexplainです。
+  SQLモード「sql_mode」の値を確認するには、グローバル変数の「sql_mode」を確認します。
 </p>
 <pre>
-explain 確認したいSQL
+select @@GLOBAL.sql_mode;
 </pre>
 <p>
-  「select * from book where author_id = 4;」というSQLを性能調査するためにexplainを使うサンプルです。SQLの前にexplainをつけるだけです。
+  出力されたSQLモードの例です。
 </p>
 <pre>
-explain select * from book where author_id = 4;
+STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 </pre>
-<h3>性能調査の見どころ</h3>
 <p>
-  性能調査の見どころです。
+  SQLモード「sql_mode」につては、以下の記事も参考にしてください。
 </p>
-<h4>性能調査の最重要ポイントはインデックスが使われているか</h4>
-<p>
-  SQLの性能調査の最重要ポイントは、インデックスが使われているかです。
-</p>
-<p>
-  数万件以上の行を持つテーブルで、すべての行を線形探索している場合、SQLは劇的に遅いです。インデックスが使われるように、SQLを修正するか、<a href="/blog/20200207093958.html">インデックスを作成</a>する必要があります。
-</p>
+<ul>
+  <li><a href="/blog/20200624110822.html">SQLモード「STRICT_TRANS_TABLES」を無効にする</a></li>
+</ul>
 
   </div>
   <div class="bottom">
