@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/mariadb-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>最後に挿入した行のIDを取得する - last_insert_id関数 - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="最後に挿入した行のIDを取得するにはlast_insert_id関数を使用します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">MariaDB入門<span class="hide-phone"> - MariaDBをPerlシステム開発で使う</span></a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200917092517.html">最後に挿入した行のIDを取得する - last_insert_id関数</a></h2>
+<p>
+  最後に挿入した行のIDを取得するには<b>last_insert_id関数</b>を使用します。
+</p>
+<pre>
+select last_insert_id();
+</pre>
+<p>
+  ユーザーデータを挿入した場合に、そのIDを知りたいという場合にlast_insert_id関数を使用します。
+</p>
+<p>
+  auto_incrementがある列に指定されている場合にMariaDBは、それを整数で管理しています。行が挿入されるとインクリメントされます。インクリメントされた値を取得できます。
+</p>
+<p>
+  他のクライアントが並列に存在して、同時に行を挿入している場合でも安心してください。トランザクションを意識せずに、正しいIDを取得できます。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB入門
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB関連技術を学ぶ
+  </div>
+  <ul>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://dbix-custom.perlzemi.com">データベースアクセスモジュール</a></li>
+    <li><a href="https://web.perlzemi.com">Webシステム開発入門</a></li>
+    <li><a href="https://linux.perlzemi.com">Linuxサーバー管理入門</a></li>
+    <li><a href="https://ubuntu.perlzemi.com/">Ubuntuサーバー構築入門</a></li> 
+    <li><a href="https://centos.perlzemi.com">CentOSサーバー構築入門</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    連絡先
+  </div>
+  <ul>
+    <li>
+      <a href="mailto:kimoto.yuki@gmail.com">kimoto.yuki@gmail.com</a>
+    </li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="kimoto_system_link">
+  <a href="https://kimoto-system.co.jp">
+    <img src="https://kimoto-system.co.jp/images/kimoto-system-logo.png" alt="Perl Webシステム開発">
+    Perl Webシステム開発の木本システム
+  </a>
+</div>
+
+<div class="copyright">
+  Copyright © Yuki Kimoto
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
