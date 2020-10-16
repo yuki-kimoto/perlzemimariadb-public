@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>テーブルの内容をCSVとして出力する - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
-<meta name="description" content="テーブルの内容をCSVとして出力するには、select文で「into outfile」を指定します。区切り文字に「,」を文字列囲みを「"」で指定します。">
+<title>CSVファイルのデータをテーブルに読み込む - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="CSVファイルのデータをテーブルに読み込むには「load data local infile」を使います。区切り文字に「,」を文字列囲みを「"」で指定します。">
   </head>
   <body>
     <div class="container">
@@ -47,24 +47,42 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20201015115811.html">テーブルの内容をCSVとして出力する</a></h2>
+    <h2><a href="/blog/20201014115811.html">CSVファイルのデータをテーブルに読み込む</a></h2>
 <p>
-  テーブルの内容をCSVとして出力するには、select文で「into outfile」を指定します。区切り文字に「,」を文字列囲みを「"」で指定します。
+  CSVファイルのデータをテーブルに読み込むには「load data local infile」を使います。区切り文字に「,」を文字列囲みを「"」で指定します。
 </p>
 <pre>
-select * from book
-  into outfile '/tmp/book.csv'
-  fields terminated by ','
+load data local infile '/tmp/book.csv'
+  into table book fields terminated by ','
   optionally enclosed by '"';
 </pre>
 <p>
-  MariaDBユーザーの権限でファイルを出力するので、だれでも書き込み可能な「/tmp」に出力しています。
+  CSVの列の並びと、フィールドの並びが異なる場合は、正しく読み込むことができません。
 </p>
 <p>
-  出力したCSVを読み込む方法については以下で解説しています。
+  CSVファイルの各列を、フィールドに対応させるには以下のようにします。
+</p>
+<pre>
+load data local infile '/tmp/book.csv'
+  into table book fields terminated by ','
+  optionally enclosed by '"'
+(id, price, name, author_id);
+</pre>
+<p>
+  列を読み飛ばしたい場合は適当な変数名を使います。
+</p>
+<pre>
+load data local infile '/tmp/book.csv'
+  into table book fields terminated by ','
+  optionally enclosed by '"'
+(id, price, @tmp1, name, author_id);
+</pre>
+<h3>テーブルの内容をCSVとして出力する</h3>
+<p>
+  テーブルの内容をCSVとして出力する方法については以下で解説しています。
 </p>
 <ul>
-  <li><a href="/blog/20201014115811.html">CSVファイルのデータをテーブルに読み込む</a></li>
+  <li><a href="/blog/20201015115811.html">テーブルの内容をCSVとして出力する</a></li>
 </ul>
 
   </div>
