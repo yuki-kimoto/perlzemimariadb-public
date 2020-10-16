@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/mariadb-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>select文 - 行の選択 - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="MariaDBでselect文をを実行しましょう。以下のselect文は、bookテーブルの「id」「name」「author_id」「price」フィールドを指定して、全ての行を取り出します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">MariaDB入門<span class="hide-phone"> - MariaDBをPerlシステム開発で使う</span></a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20201016115811.html">select文 - 行の選択</a></h2>
+<p>
+  MariaDBでselect文をを実行しましょう。以下のselect文は、bookテーブルの「id」「name」「author_id」「price」フィールドを指定して、全ての行を取り出します。
+</p>
+<pre>
+select id, name, author_id, price from book;
+</pre>
+<h3>すべてのフィールドを指定する</h3>
+<p>
+  すべてのフィールドを指定するには「*」を使用します。パフォーマンスが負担にならなければ、すべてのフィールドを指定するのが楽です。
+</p>
+<pre>
+select * from book;
+</pre>
+<h3>フィールドを縦に表示する</h3>
+<p>
+  「;」の代わりに「\G」を指定することで、フィールド名を縦に表示することができます。これは、フィールドが多くなってきたときに便利です。
+</p>
+<pre>
+select * from book\G
+</pre>
+<h3>IDを指定して行を取り出す</h3>
+<p>
+  where句を使って、idを指定して行を取り出すことができます。
+</p>
+<pre>
+select * from book where id = 3;
+</pre>
+<h3>価格の範囲を指定して行を取り出す</h3>
+<p>
+  where句を使って、価格の範囲を指定して行を取り出してみましょう。本の価格が1000円以上、2000円より小さい行を取得します。
+</p>
+<pre>
+select * from book where price &gt;= 1000 and price &lt; 2000;
+</pre>
+<p>
+  500円以下の安い書籍と5000円以上の高い書籍を取り出してみましょう。
+</p>
+<pre>
+select * from book where price &lt;= 500 or price &gt;= 5000;
+</pre>
+<h3>本の名前にPerlを含む行を取り出す</h3>
+<p>
+  likeを使って本の名前にPerlを含む行を取り出してみましょう。「%」は0個以上の任意の文字を表現しています。
+</p>
+<pre>
+select * from book where name like '%Perl%';
+</pre>
+<p>
+  Perlを先頭に含むは次のように書きます。
+</p>
+<pre>
+select * from book where name like 'Perl%';
+</pre>
+<h3>CSVファイルに出力する</h3>
+<p>
+  select文の結果をCSVファイルに出力する方法は、以下で解説しています。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB入門
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB関連技術を学ぶ
+  </div>
+  <ul>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://dbix-custom.perlzemi.com">データベースアクセスモジュール</a></li>
+    <li><a href="https://web.perlzemi.com">Webシステム開発入門</a></li>
+    <li><a href="https://linux.perlzemi.com">Linuxサーバー管理入門</a></li>
+    <li><a href="https://ubuntu.perlzemi.com/">Ubuntuサーバー構築入門</a></li> 
+    <li><a href="https://centos.perlzemi.com">CentOSサーバー構築入門</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    連絡先
+  </div>
+  <ul>
+    <li>
+      <a href="mailto:kimoto.yuki@gmail.com">kimoto.yuki@gmail.com</a>
+    </li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="kimoto_system_link">
+  <a href="https://kimoto-system.co.jp">
+    <img src="https://kimoto-system.co.jp/images/kimoto-system-logo.png" alt="Perl Webシステム開発">
+    Perl Webシステム開発の木本システム
+  </a>
+</div>
+
+<div class="copyright">
+  Copyright © Yuki Kimoto
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
