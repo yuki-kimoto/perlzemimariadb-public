@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/mariadb-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>update文 - 行の更新 - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="update文を使うと行の更新ができます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">MariaDB入門<span class="hide-phone"> - MariaDBをPerlシステム開発で使う</span></a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20201124103612.html">update文 - 行の更新</a></h2>
+<p>
+  update文を使うと行の更新ができます。
+</p>
+<pre>
+# update文 - 行の更新&lt;/h2&gt;
+update テーブル名 set フィールド名1 = 値1, フィールド名2 = 値2, ... where 条件;
+</pre>
+<p>
+  行を更新する場合は、whereで条件を付けるのが、基本です。where句がないとすべての行が更新されます(ぞぞぞっ、データベース復旧)。
+</p>
+<p>
+  行を更新する場合のサンプルです。
+</p>
+<pre>
+update book set name = 'Perl', price = 3000 where id = 1;
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB入門
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    連絡先
+  </div>
+  <ul>
+    <li>
+      <a href="mailto:kimoto.yuki@gmail.com">kimoto.yuki@gmail.com</a>
+    </li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    <a href="https://websystem.perlzemi.com/">Webシステム開発</a>や<a href="https://datascience.perlzemi.com/">データ分析</a>のデータベースとして使える<b>MariaDB</b>の入門サイトです。<br>基本的なSQL、データベース・テーブルの作成、データの保存方法などが学べます。<br><a href="https://linux.perlzemi.com/">Unix/Linux</a>ミドルウェアで補助的な利用をされている<a href="https://tutorial.perlzemi.com/">Perl</a>が、MariaDBの一部の周辺ツールでも利用されています。<br>Perl総合研究所では、データベースアクセスモジュール<a href="https://dbix-custom.perlzemi.com">DBIx::Custom</a>の開発・メンテナンスを行っています。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    Copyright © Perl総合研究所
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
