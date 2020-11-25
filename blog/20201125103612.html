@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/mariadb-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>insert文 - 行の挿入 - MariaDB入門 - MariaDBをPerlシステム開発で使う</title>
+<meta name="description" content="insert文を使うと行の挿入を行うことができます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">MariaDB入門<span class="hide-phone"> - MariaDBをPerlシステム開発で使う</span></a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20201125103612.html">insert文 - 行の挿入</a></h2>
+<p>
+  insert文を使うと行の挿入を行うことができます。
+</p>
+<pre>
+# insert文
+insert into テーブル名 (列名1, 列名2, ...) values (フィールドの値1, フィールドの値2, ...);
+</pre>
+<p>
+  insert文のサンプルです。
+</p>
+<pre>
+insert into book (id, name, price) values (1, 'Perl', 2000);
+</pre>
+<h3>auto_incrementが指定されている場合のinsert文の動作</h3>
+<p>
+  <a href="https://mariadb.perlzemi.com/blog/20200218150054.html">テーブルの作成</a>を行った場合に、フィールド定義の中で「auto_increment」が指定されているフィールドは、自動的に整数がインクリメントされて、その値が設定されます。
+</p>
+<pre>
+# フィールド定義の中で「auto_increment」が指定されているフィールドがある
+create table book (
+  id int primary key auto_increment,
+  name varchar(150) not null default '',
+  pirce int not null default 0
+) engine=InnoDB charset=utf8mb4;
+</pre>
+<p>
+  現在のauto_incrementが3であったとします。その場合に次のinsert文を実行するとします。
+</p>
+<pre>
+insert into book (name, price) values ('Perl', 2000);
+</pre>
+<p>
+  すると次のデータが、挿入されます。
+</p>
+<pre>
+id, name, price
+4, 'Perl', 2000
+</pre>
+<h3>CSVデータからデータの挿入を行いたい場合</h3>
+<p>
+  CSVデータからデータの挿入を行いたい場合はinsert文の特別な構文を使います。
+</p>
+<ul>
+  <li><a href="/blog/20201014115811.html">CSVファイルのデータをテーブルに読み込む</a></li>
+</ul>
+<p>
+  カンマ区切りではなく、タブ区切りのデータなど、他の区切り文字のデータでもデータの挿入を行うことは可能です。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB入門
+  </div>
+  <ul>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    MariaDB関連技術を学ぶ
+  </div>
+  <ul>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://dbix-custom.perlzemi.com">データベースアクセスモジュール</a></li>
+    <li><a href="https://web.perlzemi.com">Webシステム開発入門</a></li>
+    <li><a href="https://linux.perlzemi.com">Linuxサーバー管理入門</a></li>
+    <li><a href="https://ubuntu.perlzemi.com/">Ubuntuサーバー構築入門</a></li> 
+    <li><a href="https://centos.perlzemi.com">CentOSサーバー構築入門</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    連絡先
+  </div>
+  <ul>
+    <li>
+      <a href="mailto:kimoto.yuki@gmail.com">kimoto.yuki@gmail.com</a>
+    </li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="kimoto_system_link">
+  <a href="https://kimoto-system.co.jp">
+    <img src="https://kimoto-system.co.jp/images/kimoto-system-logo.png" alt="Perl Webシステム開発">
+    Perl Webシステム開発の木本システム
+  </a>
+</div>
+
+<div class="copyright">
+  Copyright © Yuki Kimoto
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
