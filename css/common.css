@@ -57,7 +57,8 @@
   }
   
   .inside {
-    width:1080px;
+    max-width:1080px;
+    width: calc(100% - 30px);
     margin:0 auto;
   }
   /* footer */
@@ -338,7 +339,6 @@
     width:100%;
     height:auto;
     overflow:visible;
-    display:none;
   }
   .hide-smartphone {
     display:none;
